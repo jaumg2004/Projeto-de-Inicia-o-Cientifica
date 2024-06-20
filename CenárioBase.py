@@ -1,23 +1,20 @@
 import random
+from abc import ABC, abstractmethod
 
-class CenárioBase:
-    def __init__(self, variancia, media, ntestes):
-        self.variancia = variancia
+class CenárioBase(ABC):
+    def __init__(self, media, variancia, ntestes):
         self.media = media
+        self.variancia = variancia
         self.ntestes = ntestes
 
-
-    def gera_ruido(self):
-        return [random.gauss(self.media, self.variancia) for _ in range(self.ntestes)]
-
-    def calcula_y(self, x):
-        raise NotImplementedError("Este método deve ser implementado pela subclasse.")
+    @abstractmethod
+    def cenario(self, x, h1, h2, media, variancia, ntestes, nBits):
+        pass
 
     def encontraErros(self, x, y):
         return sum(1 for i in range(len(x)) if y[i] != x[i])
 
     def comparacao_mais_proxima(self, y, tabela):
-        # Calcula a distância de Hamming entre duas strings
         def hamming_distance(s1, s2):
             length = min(len(s1), len(s2))
             return sum(ch1 != ch2 for ch1, ch2 in zip(s1[:length], s2[:length]))
@@ -51,10 +48,7 @@ class CenárioBase:
     def comparaSinais(self, y, P, tabela):
         y_str = ''.join(map(str, y))
         fc = self.comparacao_mais_proxima(self.subtract_binary(y_str, P), tabela)
-
-        # Ensure fc and P have the same length by padding/truncating as necessary
         min_len = min(len(fc), len(P))
         fc_padded = fc[:min_len]
         P_padded = P[:min_len]
-
         return self.xor_binary(fc_padded, P_padded)
