@@ -28,7 +28,7 @@ for i in range(nBits):
 # Define o tamanho e os parâmetros de escala para a distribuição de Rayleigh
 size = nBits
 scale1 = 0.9
-scale2 = 1.01
+scale2 = 1.1
 h1 = np.random.rayleigh(scale1, size)
 h2 = np.random.rayleigh(scale2, size)
 
@@ -55,4 +55,3 @@ plotagem = Plotagem()
 
 # Plota os resultados
 plotagem.plota_resultados(porcentagens)
-
