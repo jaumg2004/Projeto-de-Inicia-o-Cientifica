@@ -41,21 +41,6 @@ class Plotagem:
         y2 = self.fixPlot(y2)
         self.plota_diferencas(x, y1, y2, tam * 100)
 
-    def plota_estabelecimento_de_chave(self, ntestes, erros_y1, erros_y2, chaves_iguais):
-        fig, ax = plt.subplots(figsize=(10, 6))
-
-        indices = np.arange(ntestes)
-
-        ax.plot(indices, erros_y1, label='Erros Y1', color='b')
-        ax.plot(indices, erros_y2, label='Erros Y2', color='r')
-        ax.plot(indices, chaves_iguais, label='Chaves Iguais', color='g')
-
-        ax.set_xlabel('Número de Testes')
-        ax.set_ylabel('Quantidade')
-        ax.set_title('Análise do Estabelecimento de Chave')
-        ax.legend()
-
-        plt.show()
 
     def plota_resultados(self, porcentagens):
         cenarios = [f'Cenário {i+1}' for i in range(len(porcentagens))]
