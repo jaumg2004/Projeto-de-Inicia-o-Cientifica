@@ -7,6 +7,8 @@ from Cenário2 import BaixoRuidoCanalUnitario
 from Cenário3 import BaixoRuidoCanalRayleigh
 from Cenário4 import AltoRuidoCanalUnitario
 from Cenário5 import AltoRuidoCanalRayleigh
+
+#Classe de plotagem
 from Plotagem import Plotagem
 
 # Variáveis globais
@@ -25,12 +27,8 @@ nBits = int(input("7 Bits, 15 Bits, 31 Bits, 63 Bits,127 Bits ou 255 Bits\n"))
 for i in range(nBits):
     x.append(random.randint(0, 1))
 
-# Define o tamanho e os parâmetros de escala para a distribuição de Rayleigh
-size = nBits
-scale1 = 0.9
-scale2 = 1.1
-h1 = np.random.rayleigh(scale1, size)
-h2 = np.random.rayleigh(scale2, size)
+h1 = np.random.rayleigh(1.0, nBits)
+h2 = np.random.rayleigh(1.0, nBits)
 
 ruidoNuloCanalUnitario = RuidoNuloCanalUnitario(media, variancia, ntestes)
 baixoRuidoCanalUnitario = BaixoRuidoCanalUnitario(media, variancia, ntestes)
@@ -55,3 +53,5 @@ plotagem = Plotagem()
 
 # Plota os resultados
 plotagem.plota_resultados(porcentagens)
+
+
