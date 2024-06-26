@@ -7,7 +7,7 @@ class Plotagem:
         pass
 
     def plota_diferencas(self, x, y1, y2, tam):
-        fig, axes = plt.subplots(nrows = 2, ncols = 1, figsize = (15, 10))
+        fig, axes = plt.subplots(nrows = 2, ncols = 1, figsize = (15, 7))
 
         indices = range(tam)  # Cria uma lista de índices de 0 a tam-1
 
@@ -41,16 +41,15 @@ class Plotagem:
         y2 = self.fixPlot(y2)
         self.plota_diferencas(x, y1, y2, tam * 100)
 
-
     def plota_resultados(self, porcentagens):
-        cenarios = [f'Cenário {i+1}' for i in range(len(porcentagens))]
-        fig, ax = plt.subplots(figsize=(10, 6))
+        cenarios = ['Ruído Nulo Canal Unitário', 'Baixo Ruído Canal Unitário', 'Baixo Ruído Canal Rayleigh',
+                    'Alto Ruído Canal Unitário', 'Alto Ruído Canal Rayleigh']
 
-        ax.bar(cenarios, porcentagens, color='blue')
-
+        fig, ax = plt.subplots(figsize = (15, 7))
+        ax.bar(cenarios, porcentagens)
         ax.set_xlabel('Cenários')
-        ax.set_ylabel('Porcentagem de Estabelecimento de Chave')
-        ax.set_title('Porcentagem de Estabelecimento de Chave em Cada Cenário')
-
+        ax.set_ylabel('Porcentagem de Erros (%)')
+        ax.set_title('Porcentagem de Erros em Diferentes Cenários')
+        plt.xticks(rotation=0)
         plt.show()
 
