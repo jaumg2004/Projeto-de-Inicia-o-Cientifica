@@ -14,8 +14,8 @@ class BaixoRuidoCanalUnitario(CenárioBase, Plotagem, HammingCodeGenerator):
         y = [x[i] + n[i] for i in range(ntestes)]
         return [1 if y[i] > 0.5 else 0 for i in range(ntestes)]
 
-    def cenario(self, x, h1, h2, media, variancia, ntestes, nBits):
-        self.__init__(media, variancia, ntestes)  # Re-initialize with new parameters
+    def cenario(self, x, media, variancia, ntestes, nBits):
+        self.__init__(media, variancia, ntestes)
 
         n2 = nBits
 
@@ -24,7 +24,7 @@ class BaixoRuidoCanalUnitario(CenárioBase, Plotagem, HammingCodeGenerator):
         print('y1 =', y1)
         errosY1 = self.encontraErros(x, y1)
         print('erros do y1 =', errosY1)
-        y2 = self.calculaY(x, variancia -1.2, media, n2)
+        y2 = self.calculaY(x, variancia -1.3, media, n2)
         print('y2 =', y2)
         errosY2 = self.encontraErros(x, y2)
         print('erros do y2 =', errosY2)

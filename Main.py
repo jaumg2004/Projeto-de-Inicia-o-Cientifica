@@ -38,10 +38,10 @@ altoRuidoCanalRayleigh = AltoRuidoCanalRayleigh(media, variancia, ntestes)
 
 def coletar_porcentagens():
     porcentagens = []
-    porcentagens.append(ruidoNuloCanalUnitario.cenario(x, h1, h2, media, variancia, ntestes, nBits))
-    porcentagens.append(baixoRuidoCanalUnitario.cenario(x, h1, h2, media, variancia, ntestes, nBits))
+    porcentagens.append(ruidoNuloCanalUnitario.cenario(x, media, variancia, ntestes, nBits))
+    porcentagens.append(baixoRuidoCanalUnitario.cenario(x, media, variancia, ntestes, nBits))
     porcentagens.append(baixoRuidoCanalRayleigh.cenario(x, h1, h2, media, variancia, ntestes, nBits))
-    porcentagens.append(altoRuidoCanalUnitario.cenario(x, h1, h2, media, variancia, ntestes, nBits))
+    porcentagens.append(altoRuidoCanalUnitario.cenario(x, media, variancia, ntestes, nBits))
     porcentagens.append(altoRuidoCanalRayleigh.cenario(x, h1, h2, media, variancia, ntestes, nBits))
     return porcentagens
 

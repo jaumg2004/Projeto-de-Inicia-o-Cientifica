@@ -50,6 +50,6 @@ class Plotagem:
         ax.set_xlabel('Cenários')
         ax.set_ylabel('Porcentagem de Erros (%)')
         ax.set_title('Porcentagem de Erros em Diferentes Cenários')
-        
+
         plt.show()
 

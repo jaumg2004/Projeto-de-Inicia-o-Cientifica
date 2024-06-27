@@ -8,7 +8,7 @@ class RuidoNuloCanalUnitario(CenárioBase, Plotagem, HammingCodeGenerator):
         return [1 if y[i] > 0.5 else 0 for i in range(testes)]
 
 
-    def cenario(self, x, h1, h2, media, variancia, ntestes, nBits):
+    def cenario(self, x, media, variancia, ntestes, nBits):
         self.__init__(media, variancia, ntestes)  # Re-initialize with new parameters
 
         n1 = nBits
@@ -55,3 +55,4 @@ class RuidoNuloCanalUnitario(CenárioBase, Plotagem, HammingCodeGenerator):
         self.plotar(x, y1, y2, len(x))
 
         return porcentagem_de_acertos
+

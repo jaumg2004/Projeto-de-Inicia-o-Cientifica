@@ -15,7 +15,7 @@ class AltoRuidoCanalRayleigh(CenárioBase, Plotagem, HammingCodeGenerator):
         return [1 if y[i] > 0.5 else 0 for i in range(ntestes)]
 
     def cenario(self, x, h1, h2, media, variancia, ntestes, nBits):
-        self.__init__(media, variancia, ntestes)  # Re-initialize with new parameters
+        self.__init__(media, variancia, ntestes)
 
         n5 = nBits
 
@@ -24,7 +24,7 @@ class AltoRuidoCanalRayleigh(CenárioBase, Plotagem, HammingCodeGenerator):
         print('y1 =', y1)
         errosY1 = self.encontraErros(x, y1)
         print('erros do y1 =', errosY1)
-        y2 = self.calculaY(x, h2, variancia - 1.2, media, n5)
+        y2 = self.calculaY(x, h2, variancia - 1.3, media, n5)
         print('y2 =', y2)
         errosY2 = self.encontraErros(x, y2)
         print('erros do y2 =', errosY2)

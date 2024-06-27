@@ -14,8 +14,8 @@ class AltoRuidoCanalUnitario(CenárioBase, Plotagem, HammingCodeGenerator):
         y = [x[i] + n[i] for i in range(ntestes)]
         return [1 if y[i] > 0.5 else 0 for i in range(ntestes)]
 
-    def cenario(self, x, h1, h2, media, variancia, ntestes, nBits):
-        self.__init__(media, variancia, ntestes)  # Re-initialize with new parameters
+    def cenario(self, x, media, variancia, ntestes, nBits):
+        self.__init__(media, variancia, ntestes)
 
         n4 = nBits
 

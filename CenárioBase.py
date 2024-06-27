@@ -8,7 +8,7 @@ class CenárioBase(ABC):
         self.ntestes = ntestes
 
     @abstractmethod
-    def cenario(self, x, h1, h2, media, variancia, ntestes, nBits):
+    def cenario(self):
         pass
 
     def encontraErros(self, x, y):
@@ -52,3 +52,4 @@ class CenárioBase(ABC):
         fc_padded = fc[:min_len]
         P_padded = P[:min_len]
         return self.xor_binary(fc_padded, P_padded)
+
