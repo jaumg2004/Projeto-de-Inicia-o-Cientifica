@@ -8,7 +8,7 @@ class AltoRuidoCanalRayleigh(CenárioBase, Plotagem, HammingCodeGenerator):
     def calculaY(self, h, x, variancia, media, ntestes):
         # Função para gerar ruído com distribuição normal
         def geraRuido(variancia, media, ntestes):
-            return [random.gauss(media, variancia + 1.3) for _ in range(ntestes)]
+            return [random.gauss(media, variancia + 0.2) for _ in range(ntestes)]
 
         n = geraRuido(variancia, media, ntestes)
         y = [h[i] * x[i] + n[i] for i in range(ntestes)]
@@ -20,11 +20,11 @@ class AltoRuidoCanalRayleigh(CenárioBase, Plotagem, HammingCodeGenerator):
         n5 = nBits
 
         print('x =', x)
-        y1 = self.calculaY(x, h1, variancia - 1.3, media, n5)
+        y1 = self.calculaY(x, h1, variancia, media, n5)
         print('y1 =', y1)
         errosY1 = self.encontraErros(x, y1)
         print('erros do y1 =', errosY1)
-        y2 = self.calculaY(x, h2, variancia - 1.3, media, n5)
+        y2 = self.calculaY(x, h2, variancia, media, n5)
         print('y2 =', y2)
         errosY2 = self.encontraErros(x, y2)
         print('erros do y2 =', errosY2)
