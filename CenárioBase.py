@@ -11,6 +11,10 @@ class CenárioBase(ABC):
     def cenario(self):
         pass
 
+    @abstractmethod
+    def calculaY(self):
+        pass
+
     def encontraErros(self, x, y):
         return sum(1 for i in range(len(x)) if y[i] != x[i])
 
