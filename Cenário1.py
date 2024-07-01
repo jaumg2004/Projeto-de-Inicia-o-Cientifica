@@ -8,8 +8,7 @@ class RuidoNuloCanalUnitario(CenárioBase, Plotagem, HammingCodeGenerator):
         return [1 if y[i] > 0.5 else 0 for i in range(testes)]
 
 
-    def cenario(self, x, media, variancia, ntestes, nBits):
-        self.__init__(media, variancia, ntestes)  # Re-initialize with new parameters
+    def cenario(self, x, nBits):
 
         n1 = nBits
 
@@ -31,13 +30,13 @@ class RuidoNuloCanalUnitario(CenárioBase, Plotagem, HammingCodeGenerator):
         elif n1 == 15:
             tabela = self.generate_hamming_codes_15_bits()
         elif n1 == 31:
-            tabela = self.generate_space_amostral_sample_31_bits(ntestes)
+            tabela = self.generate_space_amostral_sample_31_bits(self.ntestes)
         elif n1 == 63:
-            tabela = self.generate_space_amostral_sample_63_bits(ntestes)
+            tabela = self.generate_space_amostral_sample_63_bits(self.ntestes)
         elif n1 == 127:
-            tabela = self.generate_space_amostral_sample_127_bits(ntestes)
+            tabela = self.generate_space_amostral_sample_127_bits(self.ntestes)
         elif n1 == 255:
-            tabela = self.generate_space_amostral_sample_255_bits(ntestes)
+            tabela = self.generate_space_amostral_sample_255_bits(self.ntestes)
 
         P = self.encontraParidade(y1, tabela)
         chave = self.comparaSinais(y2, P, tabela)

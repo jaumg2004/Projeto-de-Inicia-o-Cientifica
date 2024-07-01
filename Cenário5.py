@@ -14,17 +14,16 @@ class AltoRuidoCanalRayleigh(CenárioBase, Plotagem, HammingCodeGenerator):
         y = [h[i] * x[i] + n[i] for i in range(ntestes)]
         return [1 if y[i] > 0.5 else 0 for i in range(ntestes)]
 
-    def cenario(self, x, h1, h2, media, variancia, ntestes, nBits):
-        self.__init__(media, variancia, ntestes)
+    def cenario(self, x, h1, h2, nBits):
 
         n5 = nBits
 
         print('x =', x)
-        y1 = self.calculaY(x, h1, variancia, media, n5)
+        y1 = self.calculaY(x, h1, self.variancia, self.media, n5)
         print('y1 =', y1)
         errosY1 = self.encontraErros(x, y1)
         print('erros do y1 =', errosY1)
-        y2 = self.calculaY(x, h2, variancia, media, n5)
+        y2 = self.calculaY(x, h2, self.variancia, self.media, n5)
         print('y2 =', y2)
         errosY2 = self.encontraErros(x, y2)
         print('erros do y2 =', errosY2)
@@ -37,13 +36,13 @@ class AltoRuidoCanalRayleigh(CenárioBase, Plotagem, HammingCodeGenerator):
         elif n5 == 15:
             tabela = self.generate_hamming_codes_15_bits()
         elif n5 == 31:
-            tabela = self.generate_space_amostral_sample_31_bits(ntestes)
+            tabela = self.generate_space_amostral_sample_31_bits(self.ntestes)
         elif n5 == 63:
-            tabela = self.generate_space_amostral_sample_63_bits(ntestes)
+            tabela = self.generate_space_amostral_sample_63_bits(self.ntestes)
         elif n5 == 127:
-            tabela = self.generate_space_amostral_sample_127_bits(ntestes)
+            tabela = self.generate_space_amostral_sample_127_bits(self.ntestes)
         elif n5 == 255:
-            tabela = self.generate_space_amostral_sample_255_bits(ntestes)
+            tabela = self.generate_space_amostral_sample_255_bits(self.ntestes)
 
         P = self.encontraParidade(y1, tabela)
         chave = self.comparaSinais(y2, P, tabela)
